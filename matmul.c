@@ -1,7 +1,8 @@
 /* Anything may be changed, except matrix sizes and float type. 
  *
  * The output when defining CHECK should be the same with and without tuning.
- * 
+ *
+ * Optimizer: Ludwig Jacobsson, se matmul.org.c for original code 
  */
 
 #include <stdio.h>
