@@ -3,11 +3,16 @@
  * The output when defining CHECK should be the same with and without tuning.
  *
  * Optimizer: Ludwig Jacobsson, se matmul.org.c for original code 
+ *
+ * OPTIMIZATIONS:
+ * 1. Change order of for-loops to utilize L1 & L2 cache
  */
 
 #include <stdio.h>
 #include <string.h>
 
+//#define CHECK (1)
+// #define matmul(a)     (mul == a ? matmul##a() : 0)
 #define N (512)
 
 #ifdef CHECK
@@ -20,7 +25,22 @@ TYPE a[N][N];
 TYPE b[N][N];
 TYPE c[N][N];
 
-void matmul()
+void matmul2()
+{
+	size_t	i, j, k;
+        TYPE    tmp;
+	for (i = 0; i < N; i += 1) {
+		for (j = 0; j < N; j += 1) {
+			/* This might be trouble, altough globals are initiated to zero (!?) */
+                        // a[i][j] = 0; 
+                        tmp = b[j][i];
+			for (k = 0; k < N; k += 1)
+				a[j][k] += tmp * c[i][k];
+		}
+	}
+
+}
+void matmul1()
 {
 	size_t	i, j, k;
 
@@ -58,10 +78,22 @@ void output()
 #endif
 }
 
-int main()
+int main(int argc, char** argv)
 {
-	init();
-	matmul();
+        int mul = 1;
+
+        if (argc > 1) {
+                sscanf(argv[1], "%d", &mul);
+        }
+       	init();
+	
+        if (mul == 1){
+                //printf("NO-OP");
+                matmul1();
+        } else {
+                //printf("DO-OP");
+                matmul2();
+        }
 	output();
 
 	return 0;
