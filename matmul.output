@@ -1,0 +1,30 @@
+
+Analyzing loop at matmul.c:32
+
+Analyzing loop at matmul.c:33
+
+Analyzing loop at matmul.c:37
+
+
+Vectorizing loop at matmul.c:37
+
+matmul.c:37: note: === vect_do_peeling_for_alignment ===
+matmul.c:37: note: niters for prolog loop: (size_t) -(((unsigned long) vect_pa.11_30 & 15) >> 2) & 3Setting upper bound of nb iterations for prologue loop to 2
+
+matmul.c:37: note: === vect_update_inits_of_dr ===
+matmul.c:37: note: === vect_do_peeling_for_loop_bound ===Setting upper bound of nb iterations for epilogue loop to 2
+
+matmul.c:37: note: LOOP VECTORIZED.
+matmul.c:28: note: vectorized 1 loops in function.
+
+matmul.c:37: note: Completely unroll loop 2 times
+
+matmul.c:28: note: Completely unroll loop 2 times
+
+Analyzing loop at matmul.c:47
+
+Analyzing loop at matmul.c:48
+
+Analyzing loop at matmul.c:50
+
+matmul.c:43: note: vectorized 0 loops in function.

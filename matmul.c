@@ -12,7 +12,6 @@
 #include <string.h>
 
 //#define CHECK (1)
-// #define matmul(a)     (mul == a ? matmul##a() : 0)
 #define N (512)
 
 #ifdef CHECK
@@ -27,15 +26,16 @@ TYPE c[N][N];
 
 void matmul2()
 {
+        memset(a, '\0', N);
+
 	size_t	i, j, k;
         TYPE    tmp;
 	for (i = 0; i < N; i += 1) {
 		for (j = 0; j < N; j += 1) {
-			/* This might be trouble, altough globals are initiated to zero (!?) */
-                        // a[i][j] = 0; 
-                        tmp = b[j][i];
+                        // a[i][j] = 0;  -- Replaced with memset
+                        //tmp = b[j][i];  -- Replaced with -O3 opt-flag 
 			for (k = 0; k < N; k += 1)
-				a[j][k] += tmp * c[i][k];
+				a[j][k] += b[j][i] * c[i][k];
 		}
 	}
 

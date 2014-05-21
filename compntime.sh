@@ -1,6 +1,6 @@
 #/bin/bash
 
-gcc matmul.c -o matmul.x && ./matmul.x 1 > /dev/null
+gcc matmul.c -O3 -maltivec -o matmul.x && ./matmul.x 1 > /dev/null
 echo "NO-OP"
 time ./matmul.x 1
 ./matmul.x 2 > /dev/null
