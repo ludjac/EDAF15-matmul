@@ -13,6 +13,7 @@
  *
  *    TODO: Unroll inner loops  -- negative effect
  *    TODO: Cache optimize for L1 in inner loop -- Negative effect
+ *    TODO: Analyse assembler code for inefficient code
  *    TODO: Strassen algortimh?
  */
 

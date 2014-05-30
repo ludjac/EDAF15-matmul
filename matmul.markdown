@@ -75,3 +75,4 @@ Cache miss/hits for matmul3, Blocksize 320
 ==24740== LL miss rate:          2.2% (       2.4%     +        0.0%  )
 
 TODO: Strassen algortimh?
+TODO: Analyse assembler code for ineffiencies
