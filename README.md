@@ -81,4 +81,4 @@ Cache miss/hits for matmul3, Blocksize 320
     ==24740== LL misses:       9,476,259  ( 9,475,668 rd   +        591 wr)
     ==24740== LL miss rate:          2.2% (       2.4%     +        0.0%  )
 
-TODO: Strassen algortimh?
+**TODO: Strassen algortimh?**
